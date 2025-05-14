@@ -1,0 +1,80 @@
+erDiagram
+    CLIENT {
+        int client_id PK
+        string first_name
+        string last_name
+        string national_id
+        date date_of_birth
+        string address
+        string city
+        string postal_code
+        string phone_number
+        string email
+        date registration_date
+    }
+    
+    INSURANCE_TYPE {
+        int type_id PK
+        string type_name
+        string description
+        decimal base_premium
+        string coverage_details
+        string terms_conditions
+    }
+    
+    POLICY {
+        int policy_id PK
+        int client_id FK
+        int type_id FK
+        int agent_id FK
+        string policy_number
+        date start_date
+        date end_date
+        decimal premium_amount
+        decimal coverage_amount
+        string status
+        decimal risk_factor
+        string notes
+    }
+    
+    CLAIM {
+        int claim_id PK
+        int policy_id FK
+        date date_filed
+        date incident_date
+        decimal claim_amount
+        string description
+        string status
+        date resolution_date
+        string documents_reference
+    }
+    
+    AGENT {
+        int agent_id PK
+        string first_name
+        string last_name
+        string employee_id
+        date hire_date
+        string phone_number
+        string email
+        string position
+        string department
+        decimal commission_rate
+    }
+    
+    PAYMENT {
+        int payment_id PK
+        int policy_id FK
+        decimal amount
+        date payment_date
+        date due_date
+        string payment_method
+        string transaction_id
+        string status
+    }
+    
+    CLIENT ||--o{ POLICY : "has"
+    INSURANCE_TYPE ||--o{ POLICY : "categorizes"
+    AGENT ||--o{ POLICY : "manages"
+    POLICY ||--o{ CLAIM : "generates"
+    POLICY ||--o{ PAYMENT : "requires"
