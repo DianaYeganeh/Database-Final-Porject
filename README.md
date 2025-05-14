@@ -94,11 +94,3 @@ After setting up the database, you can:
 1. Use the provided queries in `insurance-useful-queries.sql` as templates for your own reporting needs
 2. Integrate the database with your frontend applications
 3. Extend the schema as needed for your specific business requirements
-
-## License
-
-[Specify your license here]
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
